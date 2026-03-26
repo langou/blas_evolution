@@ -372,13 +372,13 @@ Hermitian tridiagonal.
 
 \end{frame}
 
-\begin{frame}{even more flags (1/3)}
+\begin{frame}{even more flags (1/4)}
 %\href{https://github.com/Reference-LAPACK/lapack/issues/1017}{ISSUE-1017}
 Extract of zpotf2.f\\
 \includegraphics[height=.7\textheight]{screenshots/zpotf2.png}
 \end{frame}
 
-\begin{frame}{even more flags (2/3)}
+\begin{frame}{even more flags (2/4)}
 % email from Johnathan
 
 AXCPY
@@ -396,10 +396,25 @@ $$ y \leftarrow \alpha x^H + y$$
 
 \end{frame}
 
-\begin{frame}{even more flags (3/3)}
+\begin{frame}{even more flags (3/4)}
 %\href{https://github.com/Reference-LAPACK/lapack/issues/1017}{ISSUE-1017}
 \includegraphics[height=\textheight]{screenshots/moreflags.png}
 \end{frame}
+
+
+\begin{frame}{even more flags (4/4)}
+%\href{https://github.com/Reference-LAPACK/lapack/issues/1017}{ISSUE-1017}
+\includegraphics[height=\textheight]{screenshots/malloc_in_cblas.png}\\
+CBLAS is a wrapper to call Fortran BLAS from C. 
+It supports row and column major. Whereas Fortran BLAS only supports column major.
+CBLAS avoids many mallocs, transposition and free, (contrarily to what is done in LAPACKE,)
+by using tricks such as $(AB)^T = B^T A^T$. However, for Level 2 BLAS,
+since there is no "Conjugate" on the vector argument, 
+mallocs and free and associated copies and conjugations are necessary.
+We could remove these would we have a "Conjugate" on the vector argument of Level 2 BLAS subroutines.
+\end{frame}
+
+
 
 %\begin{frame}{even more flags (3/3)}
 
@@ -478,7 +493,17 @@ $$ y \leftarrow \alpha x^H + y$$
 \begin{frame}{complex times real}
 $$ C \leftarrow \alpha A B  + \beta C $$
 where $A$ is real and $B$ and $C$ are complex.
+
+See LAPACK subroutines CLACRM and ZLACRM and CLARCM and ZLARCM.
+
 \end{frame}
+
+
+\begin{frame}{See in Doxygen the group (make by Mark Gates) called "BLAS like"}
+\includegraphics[height=.7\textheight]{screenshots/blaslike.png}
+\end{frame}
+
+
 
 
 

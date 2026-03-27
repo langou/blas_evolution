@@ -143,16 +143,16 @@ functionality but exercises your BLAS in many and ``surprising'' way).
 
 \end{itemize}
 
-Related question: does LAPACK uses the whole for BLAS? No. 
+Related question: does LAPACK use the whole for BLAS? No. 
 List of routines that are not used:
-CSYMM,
+CSYMM, (use in TESTING,)
 CSYR2K,
 CSYRK,
-ZSYMM,
+ZSYMM,  (use in TESTING,)
 ZSYR2K,
 ZSYRK,
-DCABS1,
-SCABS1,
+DCABS1, (use by BLAS itself,)
+SCABS1, (use by BLAS itself,)
 DROTMG,
 SROTMG,
 DSDOT,
